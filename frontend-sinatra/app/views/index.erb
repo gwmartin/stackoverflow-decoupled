@@ -1,0 +1,28 @@
+<div class="stackoverflow">
+<form action="/questions" method="Post">
+  <input type="text" name="title">
+  <input type="text" name="content">
+  <input type="Submit" value="Submit">
+</form>
+</div>
+
+<script type="text/x-handlebars-template" id="question-template">
+  <div class="question-handlebars">
+
+    <h3>{{title}}</h3>
+
+    <form action="http://localhost:3000/questions/:id/upvote" class="upvote" method="post">
+      <div>
+      <input name="_method" type="hidden" value="put" />
+      <input type="submit" value="Upvote" />
+      </div>
+    </form>
+
+    <form action="/questions" class="question_downvote" method="post">
+      <div>
+      <input name="_method" type="hidden" value="put" />
+      <input type="submit" value="Downvote" />
+      </div>
+    </form>
+  </div>
+</script>
