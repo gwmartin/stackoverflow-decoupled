@@ -1,0 +1,676 @@
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateQuestions (20150427223220)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (35.9ms)[0m  [1mCREATE TABLE "questions" ("id" serial primary key, "title" character varying(255), "content" text, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "questions" already exists
+: CREATE TABLE "questions" ("id" serial primary key, "title" character varying(255), "content" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateQuestions (20150427223220)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "questions" ("id" serial primary key, "title" character varying(255), "content" text, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "questions" already exists
+: CREATE TABLE "questions" ("id" serial primary key, "title" character varying(255), "content" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mQuestion Load (0.7ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  [1m[35mAnswer Load (0.7ms)[0m  SELECT "answers".* FROM "answers"
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateQuestions (20150427223220)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.4ms)[0m  [1mCREATE TABLE "questions" ("id" serial primary key, "title" character varying(255), "content" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150427223220"]]
+  [1m[36m (16.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAnswers (20150427223255)
+  [1m[35m (14.6ms)[0m  BEGIN
+  [1m[36m (4.8ms)[0m  [1mCREATE TABLE "answers" ("id" serial primary key, "title" character varying(255), "content" text, "question_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150427223255"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to AddVoteCountToQuestions (20150429003430)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.5ms)[0m  [1mALTER TABLE "questions" ADD COLUMN "vote_count" integer DEFAULT 0[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150429003430"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Migrating to AddVoteCountToAnswers (20150429024611)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mALTER TABLE "answers" ADD COLUMN "vote_count" integer DEFAULT 0[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150429024611"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.5ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-01 11:59:10 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.5ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/_form.html.erb (15.1ms)
+  Rendered questions/index.html.erb within layouts/application (59.9ms)
+Completed 200 OK in 2231ms (Views: 1883.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/handlebars.min.js?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/ajax.js?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/questions_handlebar.js?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/questions_vote_ajax.js?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-01 11:59:13 -0700
+
+
+Started POST "/questions" for 127.0.0.1 at 2015-05-01 12:00:05 -0700
+Processing by QuestionsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j69xo2SUE+M2NiDHU0MWWt0QS3q1sJlvOfS2QMScW80=", "question"=>{"title"=>"what will you buy", "content"=>"when you are making money?"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "questions" ("content", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["content", "when you are making money?"], ["created_at", "2015-05-01 19:00:05.681935"], ["title", "what will you buy"], ["updated_at", "2015-05-01 19:00:05.681935"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2015-05-01 12:00:12 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.6ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1
+  [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = $1[0m  [["question_id", 1]]
+  Rendered answers/_form.html.erb (46.5ms)
+  Rendered questions/show.html.erb within layouts/application (51.0ms)
+Completed 200 OK in 190ms (Views: 118.2ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/questions/1/answers" for 127.0.0.1 at 2015-05-01 12:00:35 -0700
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j69xo2SUE+M2NiDHU0MWWt0QS3q1sJlvOfS2QMScW80=", "answer"=>{"title"=>"what ling will buy", "content"=>"rumba!"}, "commit"=>"Create Answer", "question_id"=>"1"}
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "answers" ("content", "created_at", "question_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "rumba!"], ["created_at", "2015-05-01 19:00:35.696399"], ["question_id", 1], ["title", "what ling will buy"], ["updated_at", "2015-05-01 19:00:35.696399"]]
+  [1m[36m (16.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/1
+Completed 302 Found in 48ms (ActiveRecord: 17.4ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2015-05-01 12:00:35 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.4ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = $1[0m  [["question_id", 1]]
+  Rendered answers/_form.html.erb (2.6ms)
+  Rendered questions/show.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 127ms (Views: 123.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-01 12:00:35 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:35 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:35 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:35 -0700
+
+
+Started PUT "/questions/1/answers/1/upvote" for 127.0.0.1 at 2015-05-01 12:00:39 -0700
+Processing by AnswersController#upvote as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[35mAnswer Load (0.4ms)[0m  SELECT  "answers".* FROM "answers"  WHERE "answers"."id" = 1  ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "answers" SET "updated_at" = $1, "vote_count" = $2 WHERE "answers"."id" = 1  [["updated_at", "2015-05-01 19:00:39.096757"], ["vote_count", 1]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.2ms)
+
+
+Started PUT "/questions/1/answers/1/upvote" for 127.0.0.1 at 2015-05-01 12:00:39 -0700
+Processing by AnswersController#upvote as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[35mAnswer Load (0.5ms)[0m  SELECT  "answers".* FROM "answers"  WHERE "answers"."id" = 1  ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "answers" SET "updated_at" = $1, "vote_count" = $2 WHERE "answers"."id" = 1  [["updated_at", "2015-05-01 19:00:39.345509"], ["vote_count", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started PUT "/questions/1/answers/1/upvote" for 127.0.0.1 at 2015-05-01 12:00:39 -0700
+Processing by AnswersController#upvote as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[35mAnswer Load (0.4ms)[0m  SELECT  "answers".* FROM "answers"  WHERE "answers"."id" = 1  ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "answers" SET "updated_at" = $1, "vote_count" = $2 WHERE "answers"."id" = 1  [["updated_at", "2015-05-01 19:00:39.670293"], ["vote_count", 3]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+
+
+Started PUT "/questions/1/answers/1/upvote" for 127.0.0.1 at 2015-05-01 12:00:39 -0700
+Processing by AnswersController#upvote as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[35mAnswer Load (0.4ms)[0m  SELECT  "answers".* FROM "answers"  WHERE "answers"."id" = 1  ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "answers" SET "updated_at" = $1, "vote_count" = $2 WHERE "answers"."id" = 1  [["updated_at", "2015-05-01 19:00:39.920459"], ["vote_count", 4]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started PUT "/questions/1/answers/1/downvote" for 127.0.0.1 at 2015-05-01 12:00:40 -0700
+Processing by AnswersController#downvote as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[35mAnswer Load (0.4ms)[0m  SELECT  "answers".* FROM "answers"  WHERE "answers"."id" = 1  ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "answers" SET "updated_at" = $1, "vote_count" = $2 WHERE "answers"."id" = 1  [["updated_at", "2015-05-01 19:00:40.439264"], ["vote_count", 3]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started PUT "/questions/1/answers/1/downvote" for 127.0.0.1 at 2015-05-01 12:00:40 -0700
+Processing by AnswersController#downvote as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[35mAnswer Load (0.4ms)[0m  SELECT  "answers".* FROM "answers"  WHERE "answers"."id" = 1  ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "answers" SET "updated_at" = $1, "vote_count" = $2 WHERE "answers"."id" = 1  [["updated_at", "2015-05-01 19:00:40.724082"], ["vote_count", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.3ms)
+
+
+Started PUT "/questions/1/answers/1/downvote" for 127.0.0.1 at 2015-05-01 12:00:40 -0700
+Processing by AnswersController#downvote as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[35mAnswer Load (0.5ms)[0m  SELECT  "answers".* FROM "answers"  WHERE "answers"."id" = 1  ORDER BY "answers"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "answers" SET "updated_at" = $1, "vote_count" = $2 WHERE "answers"."id" = 1  [["updated_at", "2015-05-01 19:00:40.861225"], ["vote_count", 1]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/_form.html.erb (1.3ms)
+  Rendered questions/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 409ms (Views: 77.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/handlebars.min.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/ajax.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/questions_handlebar.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/questions_vote_ajax.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-01 12:00:51 -0700
+
+
+Started PUT "/questions/1/downvote" for 127.0.0.1 at 2015-05-01 12:01:02 -0700
+Processing by QuestionsController#downvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.5ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:02.010740"], ["vote_count", -1]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+
+
+Started PUT "/questions/1/downvote" for 127.0.0.1 at 2015-05-01 12:01:02 -0700
+Processing by QuestionsController#downvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:02.605138"], ["vote_count", -2]]
+  [1m[35m (1.4ms)[0m  COMMIT
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 2.2ms)
+
+
+Started PUT "/questions/1/downvote" for 127.0.0.1 at 2015-05-01 12:01:03 -0700
+Processing by QuestionsController#downvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:03.039898"], ["vote_count", -3]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+Started PUT "/questions/1/downvote" for 127.0.0.1 at 2015-05-01 12:01:03 -0700
+Processing by QuestionsController#downvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:03.368512"], ["vote_count", -4]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started PUT "/questions/1/downvote" for 127.0.0.1 at 2015-05-01 12:01:03 -0700
+Processing by QuestionsController#downvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:03.686337"], ["vote_count", -5]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.3ms)
+
+
+Started PUT "/questions/1/upvote" for 127.0.0.1 at 2015-05-01 12:01:04 -0700
+Processing by QuestionsController#upvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:04.909886"], ["vote_count", -4]]
+  [1m[35m (1.3ms)[0m  COMMIT
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started PUT "/questions/1/upvote" for 127.0.0.1 at 2015-05-01 12:01:05 -0700
+Processing by QuestionsController#upvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:05.151198"], ["vote_count", -3]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.3ms)
+
+
+Started PUT "/questions/1/upvote" for 127.0.0.1 at 2015-05-01 12:01:05 -0700
+Processing by QuestionsController#upvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:05.516351"], ["vote_count", -2]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+
+
+Started PUT "/questions/1/downvote" for 127.0.0.1 at 2015-05-01 12:01:06 -0700
+Processing by QuestionsController#downvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.5ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:06.170250"], ["vote_count", -3]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started PUT "/questions/1/upvote" for 127.0.0.1 at 2015-05-01 12:01:06 -0700
+Processing by QuestionsController#upvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:06.792213"], ["vote_count", -2]]
+  [1m[35m (1.2ms)[0m  COMMIT
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.9ms)
+
+
+Started PUT "/questions/1/upvote" for 127.0.0.1 at 2015-05-01 12:01:07 -0700
+Processing by QuestionsController#upvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.5ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:07.228147"], ["vote_count", -1]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started PUT "/questions/1/upvote" for 127.0.0.1 at 2015-05-01 12:01:07 -0700
+Processing by QuestionsController#upvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:07.454025"], ["vote_count", 0]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started PUT "/questions/1/downvote" for 127.0.0.1 at 2015-05-01 12:01:08 -0700
+Processing by QuestionsController#downvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:08.053058"], ["vote_count", -1]]
+  [1m[35m (1.1ms)[0m  COMMIT
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+
+
+Started PUT "/questions/1/upvote" for 127.0.0.1 at 2015-05-01 12:01:08 -0700
+Processing by QuestionsController#upvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:08.706996"], ["vote_count", 0]]
+  [1m[35m (1.3ms)[0m  COMMIT
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 2.0ms)
+
+
+Started PUT "/questions/1/downvote" for 127.0.0.1 at 2015-05-01 12:01:09 -0700
+Processing by QuestionsController#downvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.5ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1[0m  [["updated_at", "2015-05-01 19:01:09.742315"], ["vote_count", -1]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2015-05-01 12:02:48 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-01 12:02:49 -0700
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2015-05-01 12:02:49 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-01 12:06:25 -0700
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered questions/_form.html.erb (1.7ms)
+  Rendered questions/index.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 436ms (Views: 79.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/handlebars.min.js?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/ajax.js?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/questions_handlebar.js?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/questions_vote_ajax.js?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-01 12:06:26 -0700
+
+
+Started PUT "/questions/1/downvote" for 127.0.0.1 at 2015-05-01 12:06:28 -0700
+Processing by QuestionsController#downvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.7ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1  [["updated_at", "2015-05-01 19:06:28.933197"], ["vote_count", -2]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.5ms)
+
+
+Started PUT "/questions/1/downvote" for 127.0.0.1 at 2015-05-01 12:06:29 -0700
+Processing by QuestionsController#downvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.5ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1  [["updated_at", "2015-05-01 19:06:29.452401"], ["vote_count", -3]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started PUT "/questions/1/upvote" for 127.0.0.1 at 2015-05-01 12:06:30 -0700
+Processing by QuestionsController#upvote as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.4ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = 1  ORDER BY "questions"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "questions" SET "updated_at" = $1, "vote_count" = $2 WHERE "questions"."id" = 1  [["updated_at", "2015-05-01 19:06:30.109586"], ["vote_count", -2]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2015-05-01 12:06:41 -0700
+Processing by QuestionsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j69xo2SUE+M2NiDHU0MWWt0QS3q1sJlvOfS2QMScW80=", "question"=>{"title"=>"why?", "content"=>"is the sky blue?"}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "questions" ("content", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "is the sky blue?"], ["created_at", "2015-05-01 19:06:41.979723"], ["title", "why?"], ["updated_at", "2015-05-01 19:06:41.979723"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2015-05-01 12:06:45 -0700
+Processing by QuestionsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j69xo2SUE+M2NiDHU0MWWt0QS3q1sJlvOfS2QMScW80=", "question"=>{"title"=>"why?", "content"=>"is the sky blue?"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "questions" ("content", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["content", "is the sky blue?"], ["created_at", "2015-05-01 19:06:45.931519"], ["title", "why?"], ["updated_at", "2015-05-01 19:06:45.931519"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-01 12:17:06 -0700
+
+LoadError (cannot load such file -- /Users/apprentice/Desktop/decoupled/backend-rails2/config/routes.rb):
+  activesupport (4.1.6) lib/active_support/dependencies.rb:241:in `load'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:241:in `block in load'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:232:in `load_dependency'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:241:in `load'
+  railties (4.1.6) lib/rails/application/routes_reloader.rb:40:in `block in load_paths'
+  railties (4.1.6) lib/rails/application/routes_reloader.rb:40:in `each'
+  railties (4.1.6) lib/rails/application/routes_reloader.rb:40:in `load_paths'
+  railties (4.1.6) lib/rails/application/routes_reloader.rb:16:in `reload!'
+  railties (4.1.6) lib/rails/application/routes_reloader.rb:26:in `block in updater'
+  activesupport (4.1.6) lib/active_support/file_update_checker.rb:75:in `call'
+  activesupport (4.1.6) lib/active_support/file_update_checker.rb:75:in `execute'
+  railties (4.1.6) lib/rails/application/routes_reloader.rb:7:in `execute'
+  railties (4.1.6) lib/rails/application/finisher.rb:83:in `block (2 levels) in <module:Finisher>'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:438:in `instance_exec'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:438:in `block in make_lambda'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:184:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:184:in `block in simple'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:185:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:185:in `block in simple'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:185:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:185:in `block in simple'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:86:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:83:in `prepare!'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:71:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-01 12:29:40 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.5ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/_form.html.erb (50.7ms)
+  Rendered questions/index.html.erb within layouts/application (65.2ms)
+Completed 200 OK in 523ms (Views: 101.2ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-01 12:29:41 -0700
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered questions/_form.html.erb (1.5ms)
+  Rendered questions/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 364ms (Views: 34.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/javascripts/application.js" for 127.0.0.1 at 2015-05-01 12:29:42 -0700
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/application.js"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (59.5ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at 2015-05-01 12:29:42 -0700
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (56.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (84.0ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2015-05-01 12:30:00 -0700
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j69xo2SUE+M2NiDHU0MWWt0QS3q1sJlvOfS2QMScW80=", "question"=>{"title"=>"this is new", "content"=>"her's the new thing"}, "commit"=>"Create Question"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "questions" ("content", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "her's the new thing"], ["created_at", "2015-05-01 19:30:00.633908"], ["title", "this is new"], ["updated_at", "2015-05-01 19:30:00.633908"]]
+  [1m[35m (15.6ms)[0m  COMMIT
+Completed 200 OK in 24ms (Views: 0.5ms | ActiveRecord: 16.5ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2015-05-01 12:30:11 -0700
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j69xo2SUE+M2NiDHU0MWWt0QS3q1sJlvOfS2QMScW80=", "question"=>{"title"=>"this is new", "content"=>"her's the new thing"}, "commit"=>"Create Question"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "questions" ("content", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["content", "her's the new thing"], ["created_at", "2015-05-01 19:30:11.644492"], ["title", "this is new"], ["updated_at", "2015-05-01 19:30:11.644492"]]
+  [1m[36m (15.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 16.7ms)
