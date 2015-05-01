@@ -3,11 +3,13 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
     @question = Question.new
+    render json: @questions
   end
 
   def show
     @question = Question.where(id: params[:id]).first
     @answers = @question.answers
+    render json: {question: @question, answers: @answers}
   end
 
   def create
@@ -28,20 +30,24 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
+
     redirect_to root_path
   end
 
   def edit
     @question = Question.find(params[:id])
+    render json: @question
   end
 
   def update
     @question = Question.find(params[:id])
     @question.update(question_params)
 
-   if @question.save
+    if @question.save
       redirect_to question_path(@question)
     end
+
+    render json: @questions
   end
 
   def upvote
