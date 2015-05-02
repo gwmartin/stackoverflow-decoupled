@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
-    @question = Question.new
     render json: @questions
   end
 
