@@ -6,22 +6,23 @@ $(document).ready(function() {
   })
 
 
-  $('#new_question').on('submit', function(event){
+  $('.create_question').on('submit', function(event){
     event.preventDefault();
-    var route = $(event.target).closest('form').attr('action')
+    var route = $(this).attr('action')
+    debugger
     request = $.ajax({
       url: route,
       method: "post",
       data: $(this).serialize(),
-      dataType: 'JSON'
+      dataType: 'json'
     });
     request.done(function(data){
-      // debugger
+
        console.log(data)
 
       var source = $('#question-template').html();
       var template = Handlebars.compile(source);
-      var placeholder = $('#questions-container');
+      var placeholder = $('.stackoverflow');
       placeholder.append(template(data));
 
     });
