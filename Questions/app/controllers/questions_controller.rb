@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-
   def index
     @questions = Question.all
     @question = Question.new
@@ -13,18 +12,11 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params)
-      # redirect_to root_pathp
-    # if request.xhr?
-    # respond_to do |format|
+    p params
+    @question = Question.new(title: params[:title], content: params[:content])
       if @question.save
-        p @question
-          # format.html #{redirect_to root_path, notice: "you are having a bad life or day"}
-          # format.json {render json: @question}
-          render :json => @question
+          render json: @question
       end
-    # end
-
   end
 
   def destroy
@@ -72,4 +64,3 @@ class QuestionsController < ApplicationController
   end
 end
 
-end

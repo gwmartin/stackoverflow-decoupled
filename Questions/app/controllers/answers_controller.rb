@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
   def new
     @answer = Answer.new
+    render json: @answer
   end
 
   def create
@@ -12,6 +13,7 @@ class AnswersController < ApplicationController
       redirect_to question_path(@question)
       #same as redirect to @question
     end
+    render json: @answer
   end
 
   def upvote
